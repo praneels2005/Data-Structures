@@ -1,52 +1,30 @@
-#include <iostream>
-#include <iomanip>
-using namespace std;
+#include "tree.h"
 
-#include "ShoppingCart.h"
-//#include "ShoppingCart.cpp"
-//#include "ItemToPurchase.cpp"
-
-int main() {
-  ShoppingCart myCart;
-  
-  string name;
-  string descr;
-  int price;
-  int quantity;
-  int noOfItems;
-  cout << "How many items are you purchasing: ";
-  cin >> noOfItems;
-  for (int i = 0; i < noOfItems; i++) {
-    cin.ignore();
-    cout << "ADD ITEM NO " << (i+1) << " TO CART" << endl;
-    cout << "Enter the item name:" << endl;
-    getline(cin, name);
-
-    cout << "Enter item description:" << endl;
-    getline(cin, descr);
-
-    cout << "Enter item price:" << endl;
-    cin >> price;
-
-    cout << "Enter item quantity:" << endl;
-    cin >> quantity;
-
-    ItemToPurchase item;
-    item.SetName(name);
-    item.SetDescription(descr);
-    item.SetPrice(price);
-    item.SetQuantity(quantity);
-
-    myCart.AddItem(item);
-
+int main(){
     
-  }
-  
+    tree<int> myTree;
+    myTree.insert(5);
+    myTree.insert(3);
+    myTree.insert(2);
+    myTree.insert(4);
+    myTree.insert(8);
+    myTree.insert(6);
+    myTree.insert(7);
+    myTree.insert(9);
+    
+    
+    cout << myTree.treeBSearch(9) << endl;
+    cout << myTree.treeBSearch(11) << endl;
+    
+     cout << "Number of nodes: " << myTree.nNodes() << endl;
+     
+     cout << "Inorder Traversal: " << endl;
+     myTree.traverseInorder();
+     cout << "Preorder Traversal: " << endl;
+     myTree.traversePreorder();
+     cout << "Postorder Traversal: " << endl;
+     myTree.traversePostorder();
+     
+    
 
-  // "OUTPUT ITEMS' DESCRIPTIONS and TOTAL" 
-  myCart.PrintDescriptions();
-  myCart.PrintTotal();
-
-
-  return 0;
 }
